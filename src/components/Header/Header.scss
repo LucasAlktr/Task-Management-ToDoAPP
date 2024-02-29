@@ -1,0 +1,29 @@
+header {
+    padding: 20px;
+    column-gap: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 5px #FFBE98;
+
+    .title {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 32px;
+        color: #B47B84;
+
+        svg {
+            margin-right: 15px;
+            color: #B47B84;
+        }
+    }
+
+    .author {
+        font-size: 17px;
+        color: #B47B84;
+        font-weight: 1000;
+    }
+}

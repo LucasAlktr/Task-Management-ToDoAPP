@@ -1,4 +1,5 @@
 import React from "react";
+import "../task.scss";
 
 export default function Task(props) {
 
@@ -13,7 +14,7 @@ export default function Task(props) {
     }
 
     return (
-        <div>
+        <div className="task">
             <hr />
             <h3>{props.task.description}</h3>
             <div>Id: {props.task.id}</div>
@@ -22,8 +23,8 @@ export default function Task(props) {
                     ? 'Completed'
                     : 'Open'}
             </div>
-            <button onClick={handleStatusClick}>Change Status</button>
-            <button onClick={handleRemoveClick}>Remove Task</button>
+            <button className="button-action" onClick={handleStatusClick}>Change Status</button>
+            <button className="button-action" onClick={handleRemoveClick}>Remove Task</button>
         </div>
     );
 

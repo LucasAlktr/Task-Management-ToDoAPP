@@ -1,18 +1,15 @@
 import React from "react";
+import "./Header.scss";
+import { FaTasks } from "react-icons/fa";
 
-export default function Header () {
-    
-    return(
-        <>  
-            <div>
-                Todo App
-            </div>
-            <div>
-                by Lucas Santos
-            </div>
-            <h1>
-                This are the Tasks:
-            </h1>
-        </>
-    );
+function Header() {
+  return (
+    <header>
+      <div className="title">
+        <FaTasks /> Todo App
+      </div>
+      <div className="author">by Lucas Santos</div>
+    </header>
+  );
 }
+export default Header;

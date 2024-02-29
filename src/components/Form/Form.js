@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./form.scss";
 
 export default function Form ({onAddTask}) {
 
@@ -23,9 +24,11 @@ export default function Form ({onAddTask}) {
     
     return(
         <>  
-            <h2>Add a new task:</h2>
+            <div className="form">
+                <h2 className="custom-title">Add a new task:</h2>
+            </div>
             <form action="/submit-task" onSubmit={addTask}>
-                {errorMessage !== '' && ( <div>{errorMessage}</div> )}
+                {errorMessage !== '' && ( <div className="error-message">{errorMessage}</div> )}
                 <label htmlFor="description">Description:
                     <input type="text" id="description" name="description" 
                         value={descriptionTask} onChange={(event) => setDescriptionTask(event.target.value)} maxLength="150" />

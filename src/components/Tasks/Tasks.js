@@ -1,4 +1,5 @@
-import Task from './Task/Task'
+import Task from './Task/Task';
+import "./task.scss";
 
 export default function Tasks({tasks,onStatusChange, onTaskRemove, onClearTasks}) {
 
@@ -16,7 +17,9 @@ export default function Tasks({tasks,onStatusChange, onTaskRemove, onClearTasks}
                 )
             )}
             <hr />
-            <button onClick={onClearTasks}>Clear Tasks</button>
+            <div className='task'>
+                <button className="button-action" onClick={onClearTasks}>Clear Tasks</button>
+            </div>
         </>
     );
 }

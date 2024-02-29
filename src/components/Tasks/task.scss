@@ -1,0 +1,14 @@
+.task {
+    .button-action {
+      padding: 5px 10px;
+      background-color: #F7DED0;
+      color: #561C24;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button-action:hover {
+        background-color: #E2BFB3;
+    }
+}
