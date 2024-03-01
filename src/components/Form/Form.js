@@ -24,7 +24,7 @@ export default function Form ({onAddTask}) {
     
     return(
         <>  
-            <div className="form">
+            <div>
                 <h2 className="custom-title">Add a new task:</h2>
             </div>
             <form action="/submit-task" onSubmit={addTask}>

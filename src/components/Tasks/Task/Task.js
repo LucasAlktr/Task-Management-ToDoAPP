@@ -23,8 +23,10 @@ export default function Task(props) {
                     ? 'Completed'
                     : 'Open'}
             </div>
-            <button className="button-action" onClick={handleStatusClick}>Change Status</button>
-            <button className="button-action" onClick={handleRemoveClick}>Remove Task</button>
+            <div className="col-button">
+                <button className="button-action" onClick={handleStatusClick}>Change Status</button>
+                <button className="button-action" onClick={handleRemoveClick}>Remove Task</button>
+            </div>
         </div>
     );
 
