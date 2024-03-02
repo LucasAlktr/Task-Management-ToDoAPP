@@ -25,7 +25,7 @@ export default function Form ({onAddTask}) {
     return(
         <>  
             <div>
-                <h2 className="custom-title">Add a new task:</h2>
+                <h2 className="custom-title-form">Add a new task:</h2>
             </div>
             <form action="/submit-task" onSubmit={addTask}>
                 {errorMessage !== '' && ( <div className="error-message">{errorMessage}</div> )}
