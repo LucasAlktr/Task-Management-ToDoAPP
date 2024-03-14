@@ -2,6 +2,9 @@ import Header from "./components/Header/Header";
 import Tasks from "./components/Tasks/Tasks";
 import Form from "./components/Form/Form";
 import IndexHelp from "./components/Help/IndexHelp";
+import AddHelp from "./components/Help/AddHelp";
+import ChangeHelp from "./components/Help/ChangeHelp";
+import RemoveHelp from "./components/Help/RemoveHelp";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { useState } from "react";
 import uuid from "react-uuid";
@@ -73,7 +76,15 @@ function App() {
           }
         />
         <Route path="/add" element={<Form onAddTask={handleAddTask} />} />
-        <Route path="/help" element={<IndexHelp />} />
+
+        
+        <Route path="/help" element={<IndexHelp />} >
+          <Route path="/help/adding" element={<AddHelp />} />
+          <Route path="/help/removing" element={<RemoveHelp />} />
+          <Route path="/help/changing" element={<ChangeHelp />} />
+        </Route>
+
+        
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

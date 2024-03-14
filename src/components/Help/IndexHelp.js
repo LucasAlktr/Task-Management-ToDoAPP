@@ -1,15 +1,28 @@
 import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import { BiAddToQueue, BiEraser,  BiHighlight  } from "react-icons/bi";
+import './IndexHelp.scss'
 
-const IndexHelp = () => {
+function IndexHelp ()  {
   return (
     <>
-      <h1>Help</h1>
       <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  </p>
+        <h1>Help</h1>
       </div>
-      
+      <div>
+        <h2>About This Section.</h2>
+      </div>
+      <div>
+        <p>Hello, in this section you can find some tips to help you to use our App!</p>
+        <Outlet />
+      </div>
+      <nav className="help-nav">
+        < NavLink to='/help/adding'><BiAddToQueue />Adding Tasks</NavLink>
+        < NavLink to='/help/changing'><BiHighlight />Changing Tasks</NavLink>
+        < NavLink to='/help/removing'><BiEraser />Removing Tasks</NavLink>
+      </nav>
     </>
   );
-};
+}
 
 export default IndexHelp;

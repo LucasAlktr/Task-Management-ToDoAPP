@@ -1,0 +1,41 @@
+h1 {
+    font-size: 2.0rem; 
+    color: #333; 
+    margin-bottom: 20px; 
+  }
+  
+
+  h2 {
+    font-size: 1.3rem; 
+    color: #555; 
+    margin-bottom: 15px; 
+  }
+  
+  
+  p {
+    font-size: 1.0rem; 
+    color: #777; 
+    line-height: 1.5; 
+  }
+
+  svg {
+    margin-right: 10px;
+    color: #B47B84;
+}
+
+
+.help-nav {
+    padding: 10px; 
+    display: flex; 
+    justify-content: space-around; 
+  }
+  
+  .help-nav a {
+    color: #B47B84; 
+    text-decoration: none; 
+    padding: 10px; 
+  }
+
+  .help-nav a:hover {
+    text-decoration: underline;
+  }
