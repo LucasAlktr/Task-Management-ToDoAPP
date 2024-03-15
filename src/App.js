@@ -10,7 +10,6 @@ import { useState } from "react";
 import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
 
-
 function App() {
   const [tasks, setTasks] = useState([
     {
@@ -77,14 +76,12 @@ function App() {
         />
         <Route path="/add" element={<Form onAddTask={handleAddTask} />} />
 
-        
-        <Route path="/help" element={<IndexHelp />} >
+        <Route path="/help" element={<IndexHelp />}>
           <Route path="/help/adding" element={<AddHelp />} />
           <Route path="/help/removing" element={<RemoveHelp />} />
           <Route path="/help/changing" element={<ChangeHelp />} />
         </Route>
 
-        
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
