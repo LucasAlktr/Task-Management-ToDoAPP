@@ -24,7 +24,7 @@ function App() {
     },
     {
       id: uuid(),
-      description: "Finish the lab",
+      description: "Finish the assignment",
       status: false,
     },
   ]);
