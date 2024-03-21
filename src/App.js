@@ -14,7 +14,7 @@ function App() {
   const [tasks, setTasks] = useState([
     {
       id: uuid(),
-      description: "Walk the cat",
+      description: "Walk the Dog",
       status: false,
     },
     {
