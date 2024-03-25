@@ -18,14 +18,13 @@ function App() {
 
   (async () => {
       const data = await database.load();
-      console.log('Loaded data:', data)
+      setTasks(data)
     })();
-    
   }, []);
 
 
   const handleClearTasks = () => {
-    setTasks([]);
+    //setTasks([]);
   };
 
   const handleStatusChange = (id) => {

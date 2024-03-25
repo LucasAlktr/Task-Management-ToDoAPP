@@ -7,7 +7,14 @@ export default function Tasks({
   onStatusChange,
   onTaskRemove,
   onClearTasks,
-}) {
+}){
+
+  if (tasks.length === 0) {
+    return(
+      <div><h3>There are no tasks in the list</h3></div>
+    )
+  }
+
   return (
     <>
       <h2>
@@ -27,6 +34,7 @@ export default function Tasks({
       ))}
       <hr />
       <div className="task">
+      <hr />
         <button className="button-action" onClick={onClearTasks}>
           Clear Tasks
         </button>

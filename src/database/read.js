@@ -17,6 +17,6 @@ export async function load() {
   } 
   catch (error) {
     // eslint-disable-next-line
-    throw 'Failed to load the data.';
+    throw new Error('Failed to load the data.');
   }
 }
