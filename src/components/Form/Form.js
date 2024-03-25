@@ -7,6 +7,8 @@ export default function Form({ onAddTask }) {
   const [descriptionTask, setDescriptionTask] = useState("");
   const [statusTask, setStatusTask] = useState("Open");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSaving, setIsSaving] = useState(false)
+
 
   const addTask = (event) => {
     event.preventDefault();
@@ -16,10 +18,18 @@ export default function Form({ onAddTask }) {
 
       onAddTask(descriptionTask, statusTask);
     } else setErrorMessage("Please, enter a description!");
+    setIsSaving(true);
 
     setDescriptionTask("");
     setStatusTask("open");
+    setIsSaving(false);
   };
+
+  if (isSaving){
+    return (
+      <div>Saving...</div>
+    );
+  }
 
   return (
     <>
