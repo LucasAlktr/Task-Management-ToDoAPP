@@ -6,28 +6,23 @@ import AddHelp from "./components/Help/AddHelp";
 import ChangeHelp from "./components/Help/ChangeHelp";
 import RemoveHelp from "./components/Help/RemoveHelp";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
+import * as database from './database'
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: uuid(),
-      description: "Walk the Dog",
-      status: false,
-    },
-    {
-      id: uuid(),
-      description: "Wash the car",
-      status: false,
-    },
-    {
-      id: uuid(),
-      description: "Finish the assignment",
-      status: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+
+  (async () => {
+      const data = await database.load();
+      console.log('Loaded data:', data)
+    })();
+    
+  }, []);
+
 
   const handleClearTasks = () => {
     setTasks([]);
