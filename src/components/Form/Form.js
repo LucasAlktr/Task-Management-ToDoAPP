@@ -13,6 +13,7 @@ export default function Form({ onAddTask }) {
   const [isSaving, setIsSaving] = useState(false);
   const [savedSuccessfully, setSavedSuccessfully] = useState(false);
 
+
   const addTask = async (event) => {
     event.preventDefault();
 
@@ -21,11 +22,12 @@ export default function Form({ onAddTask }) {
       setIsSaving(true);
 
       try {
-        await database.save({
+        const docRef = await database.save({
           description: descriptionTask,
           status: statusTask,
         });
-        onAddTask(descriptionTask, statusTask);
+        onAddTask(docRef.id, descriptionTask, statusTask); 
+        
         setSavedSuccessfully(true);
       } catch (error) {
         console.error("Failed to save task:", error);
@@ -83,8 +85,8 @@ export default function Form({ onAddTask }) {
                 value={statusTask}
                 onChange={(event) => setStatusTask(event.target.value)}
               >
-                <option value="open">Open</option>
-                <option value="completed">Completed</option>
+                <option value="Open">Open</option>
+                <option value="Completed">Completed</option>
               </select>
             </label>
 

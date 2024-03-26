@@ -5,7 +5,7 @@ export async function save (data){
     
     try {
       const docRef = await addDoc(collection(db, "tasks"), data);
-      console.log("Document written with ID: ", docRef.id);
+      return docRef;
     } catch (e) {
       console.error("Error adding document: ", e);
     }

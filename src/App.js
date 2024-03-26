@@ -8,8 +8,8 @@ import RemoveHelp from "./components/Help/RemoveHelp";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import * as database from "./database";
 import { Loading } from "./components/UserMessages/loading";
+import * as database from "./database";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -32,14 +32,26 @@ function App() {
     //setTasks([]);
   };
 
-  const handleStatusChange = (id) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.forEach((task) => {
-      if (task.id === id) {
-        task.done = !task.done;
-      }
-    });
-    setTasks(updatedTasks);
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      await database.updateTask(id, {
+        status: newStatus ? "Completed" : "Open",
+      });
+
+      setTasks(
+        tasks.map((task) =>
+          task.id === id
+            ? {
+                ...task,
+                done: newStatus,
+                status: newStatus ? "Completed" : "Open",
+              }
+            : task
+        )
+      );
+    } catch (error) {
+      console.error("Failed to update task status:", error);
+    }
   };
 
   const handleTaskRemove = (id) => {
@@ -47,12 +59,13 @@ function App() {
     setTasks(filteredTasks);
   };
 
-  const handleAddTask = (description, status) => {
+  const handleAddTask = (id, description, status) => {
     setTasks([
       ...tasks,
       {
+        id: id,
         description: description,
-        done: status === "completed",
+        status: status,
       },
     ]);
   };
