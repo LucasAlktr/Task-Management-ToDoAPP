@@ -54,9 +54,13 @@ function App() {
     }
   };
 
-  const handleTaskRemove = (id) => {
-    const filteredTasks = tasks.filter((task) => task.id !== id);
-    setTasks(filteredTasks);
+  const handleTaskRemove = async (id) => {
+    try {
+      await database.removeTask(id); 
+      setTasks(tasks.filter((task) => task.id !== id));
+    } catch (error) {
+      console.error("Failed to remove task:", error);
+    }
   };
 
   const handleAddTask = (id, description, status) => {
