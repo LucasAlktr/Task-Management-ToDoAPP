@@ -10,10 +10,12 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Loading } from "./components/UserMessages/loading";
 import * as database from "./database";
+import { FcOk } from "react-icons/fc";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [removedSuccessfully, setRemovedSuccessfully] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -29,7 +31,7 @@ function App() {
   }, []);
 
   const handleClearTasks = () => {
-    //setTasks([]);
+    setTasks([]);
   };
 
   const handleStatusChange = async (id, newStatus) => {
@@ -58,8 +60,13 @@ function App() {
     try {
       await database.removeTask(id); 
       setTasks(tasks.filter((task) => task.id !== id));
+      setRemovedSuccessfully(true);
     } catch (error) {
       console.error("Failed to remove task:", error);
+    } finally{
+      setTimeout(() => {
+        setRemovedSuccessfully(false);
+      }, 3000);
     }
   };
 
@@ -77,7 +84,11 @@ function App() {
   return (
     <>
       <Header />
-
+      {removedSuccessfully && (
+          <div className="success-message">
+            Task Removed Successfully! <FcOk />
+          </div>
+        )}
       {isLoading ? (
         <Loading />
       ) : (
