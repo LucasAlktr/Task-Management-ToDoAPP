@@ -7,7 +7,6 @@ import ChangeHelp from "./components/Help/ChangeHelp";
 import RemoveHelp from "./components/Help/RemoveHelp";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { useState, useEffect } from "react";
-import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
 import * as database from "./database";
 import { Loading } from "./components/UserMessages/loading";
@@ -52,7 +51,6 @@ function App() {
     setTasks([
       ...tasks,
       {
-        id: uuid(),
         description: description,
         done: status === "completed",
       },
