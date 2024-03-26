@@ -1,7 +1,6 @@
 import Task from "./Task/Task";
 import "./task.scss";
 import { FcIpad } from "react-icons/fc";
-import { useState } from "react";
 
 export default function Tasks({
   tasks,
