@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../task.scss";
 
 export default function Task(props) {
-  const [confirmDelete, setConfirmDelete] = useState(false); // Estado para controlar o diálogo de confirmação
+  const [confirmDelete, setConfirmDelete] = useState(false); 
 
   const handleStatusClick = () => {
     const id = props.task.id;
@@ -41,8 +41,12 @@ export default function Task(props) {
       {confirmDelete && (
         <div className="confirmation-dialog">
           <p>Are you sure that you want to delete this task?</p>
-          <button className="button-yes" onClick={handleConfirmDelete}>Yes</button>
-          <button className="button-no" onClick={handleCancelDelete}>No</button>
+          <button className="button-yes" onClick={handleConfirmDelete}>
+            Yes
+          </button>
+          <button className="button-no" onClick={handleCancelDelete}>
+            No
+          </button>
         </div>
       )}
     </div>

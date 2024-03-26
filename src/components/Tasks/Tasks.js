@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Task from "./Task/Task";
 import "./task.scss";
 import { FcIpad } from "react-icons/fc";
@@ -9,6 +10,21 @@ export default function Tasks({
   onClearTasks,
   isLoaded,
 }) {
+  const [confirmClearAll, setConfirmClearAll] = useState(false);
+
+  const handleClearAllClick = () => {
+    setConfirmClearAll(true);
+  };
+
+  const handleConfirmClearAll = () => {
+    onClearTasks();
+    setConfirmClearAll(false);
+  };
+
+  const handleCancelClearAll = () => {
+    setConfirmClearAll(false);
+  };
+
   return (
     <>
       <h2>
@@ -17,7 +33,7 @@ export default function Tasks({
           These are the tasks:
         </div>
       </h2>
-      {isLoaded ?  (
+      {isLoaded ? (
         tasks.length > 0 ? (
           tasks.map((task, index) => (
             <Task
@@ -28,7 +44,7 @@ export default function Tasks({
             />
           ))
         ) : (
-          <p>There are no tasks in the list</p>
+          <p>There are no tasks on the list</p>
         )
       ) : (
         <p>Loading</p>
@@ -36,10 +52,17 @@ export default function Tasks({
       <hr />
       <div className="task">
         <hr />
-        <button className="button-action" onClick={onClearTasks}>
+        <button className="button-action" onClick={handleClearAllClick}>
           Clear Tasks
         </button>
       </div>
+      {confirmClearAll && (
+        <div className="confirmation-dialog">
+          <p>Are you sure that you want to delete ALL tasks?</p>
+          <button className="button-yes-all" onClick={handleConfirmClearAll}>Yes</button>
+          <button className="button-no-all" onClick={handleCancelClearAll}>No</button>
+        </div>
+      )}
     </>
   );
 }

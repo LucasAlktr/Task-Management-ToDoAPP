@@ -13,7 +13,6 @@ export default function Form({ onAddTask }) {
   const [isSaving, setIsSaving] = useState(false);
   const [savedSuccessfully, setSavedSuccessfully] = useState(false);
 
-
   const addTask = async (event) => {
     event.preventDefault();
 
@@ -26,8 +25,8 @@ export default function Form({ onAddTask }) {
           description: descriptionTask,
           status: statusTask,
         });
-        onAddTask(docRef.id, descriptionTask, statusTask); 
-        
+        onAddTask(docRef.id, descriptionTask, statusTask);
+
         setSavedSuccessfully(true);
       } catch (error) {
         console.error("Failed to save task:", error);

@@ -30,8 +30,20 @@ function App() {
     })();
   }, []);
 
-  const handleClearTasks = () => {
-    setTasks([]);
+  const handleClearTasks = async () => {
+    try {
+      for (const task of tasks) {
+        await database.removeTask(task.id);
+      }
+      setTasks([]);
+      setRemovedSuccessfully(true);
+    } catch (error) {
+      console.error("Failed to clear tasks:", error);
+    } finally {
+      setTimeout(() => {
+        setRemovedSuccessfully(false);
+      }, 3000);
+    }
   };
 
   const handleStatusChange = async (id, newStatus) => {
@@ -58,12 +70,12 @@ function App() {
 
   const handleTaskRemove = async (id) => {
     try {
-      await database.removeTask(id); 
+      await database.removeTask(id);
       setTasks(tasks.filter((task) => task.id !== id));
       setRemovedSuccessfully(true);
     } catch (error) {
       console.error("Failed to remove task:", error);
-    } finally{
+    } finally {
       setTimeout(() => {
         setRemovedSuccessfully(false);
       }, 3000);
@@ -85,10 +97,10 @@ function App() {
     <>
       <Header />
       {removedSuccessfully && (
-          <div className="success-message">
-            Task Removed Successfully! <FcOk />
-          </div>
-        )}
+        <div className="success-message">
+          Task(s) Removed Successfully! <FcOk />
+        </div>
+      )}
       {isLoading ? (
         <Loading />
       ) : (

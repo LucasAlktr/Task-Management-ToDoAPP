@@ -1,51 +1,83 @@
 .task {
+  .col-button {
+    display: flex;
+    gap: 7px;
+    padding: 6px;
+  }
 
-    .col-button{
-        display: flex;
-        gap: 7px;
-        padding: 6px;
-    }
+  .button-action {
+    padding: 5px 10px;
+    background-color: #F7DED0;
+    color: #561C24;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
 
-    .button-action {
-      padding: 5px 10px;
-      background-color: #F7DED0;
-      color: #561C24;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-    }
-    .button-action:hover {
-        background-color: #E2BFB3;
-    }
+  .button-action:hover {
+    background-color: #E2BFB3;
+  }
 
-    .button-yes {
-        padding: 5px 10px;
-        background-color: #F7DED0;
-        color: #561C24;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-      }
-      .button-yes:hover {
-          background-color: #86aa80;
-      }
+  .button-yes {
+    padding: 5px 10px;
+    background-color: #F7DED0;
+    color: #561C24;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
 
-      .button-no {
-        padding: 5px 10px;
-        background-color: #F7DED0;
-        color: #561C24;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-      }
-      .button-no:hover {
-          background-color: #ab2f3f;
-      }
+  .button-yes:hover {
+    background-color: #86aa80;
+  }
 
+  .button-no {
+    padding: 5px 10px;
+    background-color: #F7DED0;
+    color: #561C24;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .button-no:hover {
+    background-color: #ab2f3f;
+  }
+
+}
+
+.button-yes-all {
+  padding: 5px 10px;
+  background-color: #F7DED0;
+  color: #561C24;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button-yes-all:hover {
+  background-color: #86aa80;
+}
+
+.button-no-all {
+  padding: 5px 10px;
+  background-color: #F7DED0;
+  color: #561C24;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+.button-no-all:hover {
+  background-color: #ab2f3f;
 }
