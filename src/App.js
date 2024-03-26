@@ -9,19 +9,25 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { useState, useEffect } from "react";
 import uuid from "react-uuid";
 import { Routes, Route } from "react-router-dom";
-import * as database from './database'
+import * as database from "./database";
+import { Loading } from "./components/UserMessages/loading";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-
-  (async () => {
-      const data = await database.load();
-      setTasks(data)
+    (async () => {
+      try {
+        const data = await database.load();
+        setTasks(data);
+      } catch (error) {
+        console.error("Failed to load tasks:", error);
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, []);
-
 
   const handleClearTasks = () => {
     //setTasks([]);
@@ -56,28 +62,34 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Tasks
-              tasks={tasks}
-              onStatusChange={handleStatusChange}
-              onTaskRemove={handleTaskRemove}
-              onClearTasks={handleClearTasks}
-            />
-          }
-        />
-        <Route path="/add" element={<Form onAddTask={handleAddTask} />} />
 
-        <Route path="/help" element={<IndexHelp />}>
-          <Route path="/help/adding" element={<AddHelp />} />
-          <Route path="/help/removing" element={<RemoveHelp />} />
-          <Route path="/help/changing" element={<ChangeHelp />} />
-        </Route>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Tasks
+                tasks={tasks}
+                onStatusChange={handleStatusChange}
+                onTaskRemove={handleTaskRemove}
+                onClearTasks={handleClearTasks}
+                isLoaded={!isLoading}
+              />
+            }
+          />
+          <Route path="/add" element={<Form onAddTask={handleAddTask} />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+          <Route path="/help" element={<IndexHelp />}>
+            <Route path="/help/adding" element={<AddHelp />} />
+            <Route path="/help/removing" element={<RemoveHelp />} />
+            <Route path="/help/changing" element={<ChangeHelp />} />
+          </Route>
+
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      )}
     </>
   );
 }
