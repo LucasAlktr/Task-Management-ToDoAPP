@@ -59,8 +59,12 @@ export default function Tasks({
       {confirmClearAll && (
         <div className="confirmation-dialog">
           <p>Are you sure that you want to delete ALL tasks?</p>
-          <button className="button-yes-all" onClick={handleConfirmClearAll}>Yes</button>
-          <button className="button-no-all" onClick={handleCancelClearAll}>No</button>
+          <button className="button-yes-all" onClick={handleConfirmClearAll}>
+            Yes
+          </button>
+          <button className="button-no-all" onClick={handleCancelClearAll}>
+            No
+          </button>
         </div>
       )}
     </>
