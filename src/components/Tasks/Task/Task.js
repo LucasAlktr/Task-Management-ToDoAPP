@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../task.scss";
 
 export default function Task(props) {
-  const [confirmDelete, setConfirmDelete] = useState(false); 
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleStatusClick = () => {
     const id = props.task.id;
